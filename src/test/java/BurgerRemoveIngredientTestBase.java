@@ -5,7 +5,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 import static org.junit.Assert.*;
 
 //Тест удаление ингредиента
-@RunWith(MockitoJUnitRunner.class)
 public class BurgerRemoveIngredientTestBase extends BurgerTestBase {
 
     @Test
@@ -13,4 +12,5 @@ public class BurgerRemoveIngredientTestBase extends BurgerTestBase {
         burger.removeIngredient(0);
         assertEquals(ingredientSecond, burger.ingredients.get(0));
     }
+
 }

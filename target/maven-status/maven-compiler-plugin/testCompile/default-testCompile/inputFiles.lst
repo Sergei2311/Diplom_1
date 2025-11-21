@@ -1,7 +1,6 @@
+C:\Users\stala\Diplom_1\src\test\java\BurgerTestBase.java
 C:\Users\stala\Diplom_1\src\test\java\BurgerBunTest.java
-C:\Users\stala\Diplom_1\src\test\java\BurgerAddIngredientTest.java
-C:\Users\stala\Diplom_1\src\test\java\BurgerGetPriceTest.java
-C:\Users\stala\Diplom_1\src\test\java\BurgerRemoveIngredientTest.java
-C:\Users\stala\Diplom_1\src\test\java\BurgerGetReceiptTest.java
-C:\Users\stala\Diplom_1\src\test\java\BurgerMoveIngredientTest.java
-C:\Users\stala\Diplom_1\src\test\java\BurgerTest.java
+C:\Users\stala\Diplom_1\src\test\java\BurgerGetPriceTestBase.java
+C:\Users\stala\Diplom_1\src\test\java\data\DataTest.java
+C:\Users\stala\Diplom_1\src\test\java\BurgerRemoveIngredientTestBase.java
+C:\Users\stala\Diplom_1\src\test\java\BurgerMoveIngredientTestBase.java

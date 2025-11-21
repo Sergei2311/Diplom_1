@@ -5,7 +5,7 @@ JUnit version 4.13
 Подключены библиотеки: JaCoCo, Mockito, JUnit 4.
 
 В тест Java созданы следующие тесты для тестирования класса Burger
-1. BurgerBunTest - добавление булочки
+1. BurgerBunTest - добавление булочки и ингредиентов
 2. BurgerAddIngredientTest - добавление ингредиента в бургер
 3. BurgerRemoveIngredientTestBase - удаление ингредиента из бургера
 4. BurgerMoveIngredientTestBase - замена ингредиента
