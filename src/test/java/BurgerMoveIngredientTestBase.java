@@ -1,42 +1,77 @@
+import junit.framework.TestCase;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import praktikum.Burger;
 import praktikum.Ingredient;
 
-import static data.DataTest.INGREDIENT_ONE;
-import static data.DataTest.INGREDIENT_TWO;
-import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.when;
 
 //Тест замена ингредиентов
 @RunWith(Parameterized.class)
 public class BurgerMoveIngredientTestBase extends BurgerTestBase {
-    private final Ingredient ingredientOne;
-    private final Ingredient ingredientTwo;
-    private final Ingredient expect;
 
-    public BurgerMoveIngredientTestBase(Ingredient ingredientOne, Ingredient ingredientTwo, Ingredient expect) {
-        this.ingredientOne = ingredientOne;
-        this.ingredientTwo = ingredientTwo;
-        this.expect = expect;
+    @Mock
+    private Ingredient ingredientOne;
+
+    @Mock
+    private Ingredient ingredientTwo;
+
+    @Mock
+    private Ingredient expect;
+
+    private Burger burger;
+
+    private final String ingredientOneName;
+    private final String ingredientTwoName;
+    private final String expectName;
+
+    public BurgerMoveIngredientTestBase(
+            String ingredientOneName,
+            String ingredientTwoName,
+            String expectName
+    ) {
+        this.ingredientOneName = ingredientOneName;
+        this.ingredientTwoName = ingredientTwoName;
+        this.expectName = expectName;
     }
 
-    @Parameterized.Parameters(name = "Данные для теста: ingredientOne={0}, ingredientTwo={1}, expect={2}")
-    public static Object[][] ingredients() {
+    @Parameterized.Parameters(name = "Тест: {0} → {1}, ожидаем {2}")
+    public static Object[][] data() {
         return new Object[][]{
-                {INGREDIENT_ONE, INGREDIENT_TWO, INGREDIENT_TWO},
-                {INGREDIENT_TWO, INGREDIENT_ONE, INGREDIENT_ONE}
+                {"IngredientA", "IngredientB", "IngredientB"},
+                {"IngredientB", "IngredientA", "IngredientA"}
         };
+    }
+
+    @Before
+    public void setUp() {
+        // Инициализируем моки
+        MockitoAnnotations.initMocks(this);
+
+        // Настраиваем возвращение Name
+        when(ingredientOne.getName()).thenReturn(ingredientOneName);
+        when(ingredientTwo.getName()).thenReturn(ingredientTwoName);
+        when(expect.getName()).thenReturn(expectName);
+
+        // Создаём Burger
+        burger = new Burger();
     }
 
     @Test
     public void moveIngredientTest() {
-        Burger burger = new Burger();
-
+        // Добавляем ингредиенты в бургер
         burger.addIngredient(ingredientOne);
         burger.addIngredient(ingredientTwo);
-        burger.moveIngredient(1, 0);
-        assertEquals(expect, burger.ingredients.get(0));
+
+        // Перемещаем ингредиент
+        burger.moveIngredient(0, 1);
+
+        // Выполняем проверку ожидаемого Name с фактическим
+        TestCase.assertEquals(expectName, burger.ingredients.get(0).getName());
     }
 
 }
